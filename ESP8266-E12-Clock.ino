@@ -12,10 +12,6 @@
 #include <TimeLib.h>                            //by Paul Stoffregen, not included in the Arduino IDE !!!     https://github.com/PaulStoffregen/Time
 #include <Timezone.h>                           //by Jack Christensen, not included in the Arduino IDE !!!    https://github.com/JChristensen/Timezone
 #include <TaskScheduler.h>
-
-// Libary für Modbus
-#include <Mudbus.h>
-
 /***********************************************/
 
 /**** GLOBAL VARIABLES *************************/
@@ -120,22 +116,6 @@ Scheduler runner;
 
 Task t1(0, TASK_FOREVER, &lcddim, &runner, true);
 Task t2(0, TASK_FOREVER, &irdecode, &runner, true);
-
-
-// Modbus aufrufen
-Mudbus Mb;
-
-int ipsmbhours;
-int ipsmbminutes;
-int ipsmbWochenTag;
-int ipsmbTag;
-int ipsmbMonat;
-int ipsmbJahr;
-float ipsmbTempA;
-float ipsmbTempWZ;
-float ipsmbTempSZ;
-float ipsmbTempCZ;
-float ipsmbTempKZ;
 
 //
 //*******************************************

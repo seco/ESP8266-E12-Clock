@@ -22,8 +22,6 @@ void loop() {
 
   FBCheck();
 
-  Modbus();
-
   IPSymconCheck();
   
 }
