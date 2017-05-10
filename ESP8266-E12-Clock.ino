@@ -1,4 +1,22 @@
-/**** INCLUDES *********************************/
+////////////////////////////////////////////////////////////
+////  ESP8266-E12 (NodeMCU) Info Display                ////
+////                                                    ////
+////  SDA         - PIN D2 \ I2C Bus                    ////
+////  SCL         - PIN D1 /                            ////
+////  LCD Dim     - D8                                  ////
+////                                                    ////
+////  One-Wire    - D7                                  ////
+////                                                    ////
+////  DHT Sensor  - D6                                  ////
+////                                                    ////
+////  IR Empfang  - D3                                  ////
+////                                                    ////
+////  IR Senden   - D5                                  ////
+////                                                    ////
+////                                                    ////
+////                              Powered by DJ Terror  ////
+////////////////////////////////////////////////////////////
+/**** INCLUDES ********************************************/
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
 #include <WiFiUdp.h>
@@ -12,9 +30,11 @@
 #include <TimeLib.h>                            //by Paul Stoffregen, not included in the Arduino IDE !!!     https://github.com/PaulStoffregen/Time
 #include <Timezone.h>                           //by Jack Christensen, not included in the Arduino IDE !!!    https://github.com/JChristensen/Timezone
 #include <TaskScheduler.h>
-/***********************************************/
+#include <DHT.h>
+#include <OneWire.h>
+/**********************************************************/
 
-/**** GLOBAL VARIABLES *************************/
+/**** GLOBAL VARIABLES ************************************/
 #define FirmwareVer  2 // Bitte hier Version der Firmware eintragen
 #define URL_Mit_Version_Info "http://192.168.1.90/ESP-Clock-Update/ESP-Clock-Update.txt" 
 #define URL_Mit_Firmware "http://192.168.1.90/ESP-Clock-Update/ESP-Clock-Update.bin"
@@ -117,10 +137,24 @@ Scheduler runner;
 Task t1(0, TASK_FOREVER, &lcddim, &runner, true);
 Task t2(0, TASK_FOREVER, &irdecode, &runner, true);
 
+OneWire  ds(D7);  // on pin 10 (a 4.7K resistor is necessary)
+
+#define DHTPIN            D6         // Pin which is connected to the DHT sensor.
+
+// Uncomment the type of sensor in use:
+//#define DHTTYPE           DHT11     // DHT 11 
+#define DHTTYPE           DHT22     // DHT 22 (AM2302)
+//#define DHTTYPE           DHT21     // DHT 21 (AM2301)
+
+// See guide for details on sensor wiring and usage:
+//   https://learn.adafruit.com/dht/overview
+
+DHT dht(DHTPIN, DHTTYPE);
+
 //
-//*******************************************
+//*********************************************************/
 //* big numbers
-//*******************************************
+//*********************************************************/
 // based on http://www.arduino.cc/cgi-bin/yabb2/YaBB.pl?num=1265696343
 
 // the 8 arrays that form each segment of the custom numbers
@@ -133,7 +167,7 @@ byte C5[8] ={B00011,B00011,B00011,B00011,B00011,B11111,B11111,B11111};
 byte C6[8] ={B11100,B11100,B11100,B11100,B11100,B11100,B11100,B11100};
 byte C7[8] ={B11100,B11100,B11100,B00000,B00000,B00000,B11100,B11100};
 
-/***********************************************/
+/**********************************************************/
 
 void initDebug() {
   if(HTTPDEBUG == 1 or IRDEBUG == 1 or OTADEBUG == 1 or FBDEBUG == 1 or LCDINFO == 1)
