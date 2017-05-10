@@ -13,12 +13,13 @@
 ////                                                                                                            ////
 ////  IR Senden   - D5                                                                                          ////
 ////                                                                                                            ////
+////  Uhrzeit und Datum über NTP                                                                                ////
 ////  OTA Flash Funktion für Arduino und über WWW                                                               ////
 ////  Fritzbox Anruf Monitor für eingehende Anrufe                                                              ////
 ////  IP-Symcon Temperatur Fühler abfrage                                                                       ////
 ////  Infrarot empfang und Befehlsauslösung auf der IP-Symcon                                                   ////
-////  Infrarot Senden                                                                                           ////
-////  Ausgabe der Zeit auf dem LCD Display mit Temperaturen                                                     ////
+////  Infrarot Befehle Senden (to-do)                                                                           ////
+////  Ausgabe des Datums und der Uhrzeit auf dem LCD Display mit Temperaturen Anzeige der IP-Symcon             ////
 ////                                                                                                            ////
 ////                                                                                                            ////
 ////                                                                                      Powered by DJ Terror  ////
