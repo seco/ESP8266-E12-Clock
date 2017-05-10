@@ -1,24 +1,29 @@
-////////////////////////////////////////////////////////////
-////  ESP8266-E12 (NodeMCU) Info Display                ////
-////                                                    ////
-////  SDA         - PIN D2 \ I2C Bus                    ////
-////  SCL         - PIN D1 /                            ////
-////  LCD Dim     - D8                                  ////
-////                                                    ////
-////  One-Wire    - D7                                  ////
-////                                                    ////
-////  DHT Sensor  - D6                                  ////
-////                                                    ////
-////  IR Empfang  - D3                                  ////
-////                                                    ////
-////  IR Senden   - D5                                  ////
-////                                                    ////
-////  OTA Flash Funktion für Arduino und über WWW       ////
-////                                                    ////
-////                                                    ////
-////                                                    ////
-////                              Powered by DJ Terror  ////
-////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+////  ESP8266-E12 (NodeMCU) Info Display                          ////
+////                                                              ////
+////  SDA         - PIN D2 \ I2C Bus                              ////
+////  SCL         - PIN D1 /                                      ////
+////  LCD Dim     - D8                                            ////
+////                                                              ////
+////  One-Wire    - D7                                            ////
+////                                                              ////
+////  DHT Sensor  - D6                                            ////
+////                                                              ////
+////  IR Empfang  - D3                                            ////
+////                                                              ////
+////  IR Senden   - D5                                            ////
+////                                                              ////
+////  OTA Flash Funktion für Arduino und über WWW                 ////
+////  Fritzbox Anruf Monitor für eingehende Anrufe                ////
+////  IP-Symcon Temperatur Fühler abfrage                         ////
+////  Infrarot empfang und Befehlsauslösung auf der IP-Symcon     ////
+////  Infrarot Senden                                             ////
+////  Ausgabe der Zeit auf dem LCD Display mit Temperaturen       ////
+////                                                              ////
+////                                                              ////
+////                                        Powered by DJ Terror  ////
+//////////////////////////////////////////////////////////////////////
+
 /**** INCLUDES ********************************************/
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
